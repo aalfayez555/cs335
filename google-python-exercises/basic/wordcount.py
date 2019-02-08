@@ -43,6 +43,7 @@ def find_every(filename):
   f=open(filename,'rU') # this to open the file and read from it 
   info={}
   for l in f:
+    l = l.translate(None,'\'\\[]!@#$%^&*()-<>/?.,":')
     ws=l.split()
     for w in ws:
       w=w.lower()
@@ -57,7 +58,7 @@ def print_words(filename):
   info=find_every(filename)
   s=sorted(info.items())
   for ss in s:
-    print ss
+    print ("{} : {}".format(ss[0],ss[1]))
   #print info
   
   return info
